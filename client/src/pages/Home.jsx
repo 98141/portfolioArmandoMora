@@ -6,7 +6,6 @@ export default function Home() {
   useReveal();
   return (
     <>
-      ;
       <Hero />
       <Projects featuredOnly />
     </>

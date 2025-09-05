@@ -1,4 +1,16 @@
-root {
+/* Tema claro por defecto */
+:root {
+  --bg: #f9fafb;
+  --bg-2: #ffffff;
+  --fg: #111827;
+  --muted: #6b7280;
+  --pri: #6366f1;
+  --acc: #14b8a6;
+  --card: #ffffff;
+}
+
+/* Tema oscuro cuando <html> tiene .dark */
+:root.dark {
   --bg: #0b0e14;
   --bg-2: #121826;
   --fg: #e6e9ef;
@@ -7,20 +19,37 @@ root {
   --acc: #5dd3f3;
   --card: #111827;
 }
+
+/* Reset básico */
 * {
   box-sizing: border-box;
 }
 html,
-body,
-#root {
-  height: 100%;
-}
 body {
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+
+#root,
+.app-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
   background: var(--bg);
   color: var(--fg);
   font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu;
 }
+
+/* <main> se expande y empuja el footer al fondo */
+main {
+  flex: 1;
+  display: block;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -29,10 +58,14 @@ a {
   color: var(--acc);
   text-decoration: none;
 }
+
+/* Contenedor de ancho */
 .container {
   width: min(1100px, 92%);
   margin: auto;
 }
+
+/* Utilidades */
 .btn {
   padding: 0.6rem 1rem;
   border-radius: 10px;
@@ -40,7 +73,7 @@ a {
   color: var(--fg);
   border: 1px solid #2f3b54;
   cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s;
+  transition: transform 0.15s ease, background 0.2s ease;
 }
 .btn:hover {
   transform: translateY(-1px);
@@ -62,26 +95,4 @@ a {
 }
 .err {
   color: #f87171;
-}
-
-:root {
-  --bg: #f9fafb;
-  --fg: #111827;
-  --muted: #6b7280;
-  --pri: #6366f1;
-  --acc: #14b8a6;
-  --card: #ffffff;
-}
-:root.dark {
-  --bg: #0b0e14;
-  --fg: #e6e9ef;
-  --muted: #9aa4b2;
-  --pri: #6c5ce7;
-  --acc: #5dd3f3;
-  --card: #111827;
-}
-body {
-  background: var(--bg);
-  color: var(--fg);
-  transition: background 0.25s ease, color 0.25s ease;
 }
