@@ -63,3 +63,25 @@ a {
 .err {
   color: #f87171;
 }
+
+:root {
+  --bg: #f9fafb;
+  --fg: #111827;
+  --muted: #6b7280;
+  --pri: #6366f1;
+  --acc: #14b8a6;
+  --card: #ffffff;
+}
+:root.dark {
+  --bg: #0b0e14;
+  --fg: #e6e9ef;
+  --muted: #9aa4b2;
+  --pri: #6c5ce7;
+  --acc: #5dd3f3;
+  --card: #111827;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  transition: background 0.25s ease, color 0.25s ease;
+}

@@ -8,6 +8,7 @@ import './styles/components.css'
 import './styles/sections.css'
 import './i18n'
 
+document.documentElement.classList.add('js');
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 <React.StrictMode>
