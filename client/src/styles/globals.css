@@ -1,0 +1,65 @@
+root {
+  --bg: #0b0e14;
+  --bg-2: #121826;
+  --fg: #e6e9ef;
+  --muted: #9aa4b2;
+  --pri: #6c5ce7;
+  --acc: #5dd3f3;
+  --card: #111827;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  color: var(--acc);
+  text-decoration: none;
+}
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
+}
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: #232b3a;
+  color: var(--fg);
+  border: 1px solid #2f3b54;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  background: #2a3550;
+}
+.btn.primary {
+  background: var(--pri);
+  border-color: transparent;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid #374151;
+}
+.lead {
+  color: var(--muted);
+}
+.ok {
+  color: #34d399;
+}
+.err {
+  color: #f87171;
+}
