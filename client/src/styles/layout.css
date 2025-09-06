@@ -1,37 +1,231 @@
-/* ===========================
-   Layout: header, main, footer
-   =========================== */
-
-.nav {
+/* ====== SHELL ====== */
+.sb-navbar {
   position: sticky;
-  top: 0;
-  backdrop-filter: blur(6px);
-  background: rgba(11, 14, 20, 0.6);
-  border-bottom: 1px solid #1f2937;
-  z-index: 10; /* por encima de contenido */
+  top: 14px; 
+  margin-top: 8px; 
+  z-index: 60;
+  background: transparent; 
 }
-.nav-inner {
-  display: flex;
+
+.sb-navbar > .container {
+  width: 100%;
+  max-width: none;     
+  padding-inline: 0;  
+  margin: 0;           
+}
+
+.sb-wrap {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* izq | centro | der */
   align-items: center;
-  justify-content: space-between;
-  padding: 0.8rem 0;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  padding: 14px 18px; /* respiración vertical/lateral */
+  background: rgba(18, 24, 38, 0.78); /* oscuro translúcido, acorde a tu tema */
+  backdrop-filter: blur(6px);
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
-.brand {
+
+/* ====== BRAND ====== */
+.sb-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--fg);
+}
+.sb-logo {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.sb-mark {
   font-weight: 800;
   letter-spacing: 0.5px;
   color: var(--fg);
 }
+
+/* ====== CENTER MENU ====== */
+.sb-center {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.6rem, 1.8vw, 1.2rem);
+  min-width: 0;
+}
+.sb-link {
+  color: var(--fg);
+  text-decoration: none;
+  padding: 0.52rem 0.85rem;
+  border-radius: 10px;
+  white-space: nowrap;
+  line-height: 1;
+}
+.sb-link:hover {
+  background: rgba(31, 41, 55, 0.6);
+}
+.sb-link.active {
+  background: #1f2937;
+}
+
+/* ====== RIGHT ====== */
+.sb-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.sb-cv {
+  padding: 0.5rem 0.7rem;
+}
+
+/* ====== BURGER ====== */
+.sb-burger {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #2a3346;
+  background: var(--bg-2, #121826);
+  display: none; /* visible en móvil */
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.sb-burger span {
+  width: 18px;
+  height: 2px;
+  background: #9aa4b2;
+  display: block;
+  border-radius: 2px;
+}
+.sb-burger.active span:nth-child(2) {
+  transform: scaleX(0.7);
+}
+
+/* ====== DRAWER (mobile) ====== */
+.sb-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: 88%;
+  max-width: 380px;
+  background: var(--bg-2, #121826);
+  border-left: 1px solid #1f2937;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.22);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+}
+.sb-drawer.open {
+  transform: translateX(0);
+}
+
+.sb-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #1f2937;
+  color: var(--fg);
+  font-weight: 800;
+}
+.sb-drawer-close {
+  background: transparent;
+  border: 0;
+  color: #9aa4b2;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.sb-drawer-body {
+  padding: 0.6rem 0.9rem 1rem;
+  overflow: auto;
+}
+.sb-drawer-link {
+  display: block;
+  color: var(--fg);
+  text-decoration: none;
+  padding: 0.65rem 0.6rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.sb-drawer-link:hover {
+  background: #1f2937;
+}
+.sb-drawer-link.active {
+  outline: 2px solid rgba(108, 92, 231, 0.22);
+}
+
+.sb-drawer-sep {
+  height: 1px;
+  background: #1f2937;
+  margin: 0.8rem 0;
+}
+.sb-drawer-inline {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* Backdrop */
+.sb-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  z-index: 70;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 960px) {
+  .sb-center {
+    display: none;
+  } /* menú central se oculta en móvil */
+  .sb-cv {
+    display: none;
+  } /* el CV pasa al drawer */
+  .sb-burger {
+    display: inline-flex;
+  }
+}
+
+/* Menú con mayor separación y pastilla activa */
 .menu {
   display: flex;
-  gap: 1rem;
+  justify-content: center; /* centrado horizontal en la columna central */
+  flex-wrap: wrap; /* permite 2 líneas si falta espacio */
+  gap: clamp(0.6rem, 1.8vw, 1.2rem); /* separación entre items */
+  margin: 0;
 }
 .menu a {
   color: var(--fg);
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
+  padding: 0.52rem 0.85rem; /* hit-area cómoda */
+  border-radius: 10px;
+  white-space: nowrap; /* evita saltos raros en una palabra */
+  line-height: 1;
 }
 .menu a.active {
   background: #1f2937;
+}
+
+/* Acciones a la derecha siempre dentro y con aire */
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Ajustes responsivos simples */
+@media (max-width: 980px) {
+  .menu {
+    gap: 0.8rem;
+  }
+}
+@media (max-width: 760px) {
+  .menu {
+    display: none;
+  } /* activa tu menú móvil aquí si lo tienes */
 }
 
 .footer {
