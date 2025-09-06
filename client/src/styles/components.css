@@ -60,6 +60,7 @@
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-top: 0.8rem;
+  padding-bottom: 20px;
 }
 .chip {
   background: #1f2937;
@@ -197,7 +198,9 @@
   box-shadow: 0 10px 34px rgba(124, 58, 237, 0.35);
   transform: translateY(-1px);
 }
-
+.btn {
+  margin-right: 10px;
+}
 /* Preferencias accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
